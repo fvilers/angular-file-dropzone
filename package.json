@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/fvilers/angular-file-dropzone/issues"
   },
-  "homepage": "https://github.com/fvilers/angular-file-dropzone#readme"
+  "homepage": "https://github.com/fvilers/angular-file-dropzone#readme",
+  "dependencies": {
+    "@angular/common": "4.0.0",
+    "@angular/core": "4.0.0",
+    "rxjs": "5.0.1",
+    "zone.js": "0.8.4"
+  }
 }
