@@ -1,0 +1,22 @@
+{
+  "name": "angular-file-dropzone",
+  "version": "0.0.0",
+  "description": "A simple file dropzone for Angular",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvilers/angular-file-dropzone.git"
+  },
+  "keywords": [
+    "angular",
+    "directive",
+    "file",
+    "dropzone"
+  ],
+  "author": "Fabian Vilers <fabian.vilers@dev-one.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvilers/angular-file-dropzone/issues"
+  },
+  "homepage": "https://github.com/fvilers/angular-file-dropzone#readme"
+}
