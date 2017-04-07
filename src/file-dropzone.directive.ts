@@ -1,11 +1,14 @@
 import { Directive, ElementRef, EventEmitter, OnInit, Output, Renderer } from '@angular/core';
 
+import { DroppedFile } from './dropped-file';
+import { DroppedFileImpl } from './dropped-file-impl';
+
 @Directive({
   selector: '[ngFileDropzone]'
 })
 export class FileDropzoneDirective implements OnInit {
   @Output()
-  public filesDrop = new EventEmitter();
+  public fileDrop = new EventEmitter<DroppedFile>();
 
   constructor(private el: ElementRef, private renderer: Renderer) {
   }
@@ -33,6 +36,17 @@ export class FileDropzoneDirective implements OnInit {
   }
 
   private handleFiles(files) {
-  // TODO
+    for (let file of files) {
+      const reader = new FileReader();
+        
+      reader.onload = (loaded: ProgressEvent) => {
+        const fileReader = loaded.target as FileReader;
+        const droppedFile = new DroppedFileImpl(file.lastModifiedDate, file.name, file.size, file.type, fileReader.result);
+        
+        this.fileDrop.emit(droppedFile);
+      };
+  
+      reader.readAsDataURL(file);
+    }
   }
 }
