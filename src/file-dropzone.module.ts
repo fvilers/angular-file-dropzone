@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 
+import { FileDropzoneDirective } from './file-dropzone.directive';
+
 @NgModule({
-  declarations: [],
-  exports: []
+  declarations: [FileDropzoneDirective],
+  exports: [FileDropzoneDirective]
 })
 export class FileDropzoneModule {
 }
