@@ -14,17 +14,17 @@ export class FileDropzoneDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.renderer.listen(this.el.nativeElement, 'dragenter', event => {
+    this.renderer.listen(this.el.nativeElement, 'dragenter', (event: DragEvent) => {
       event.stopPropagation();
       event.preventDefault();
     });
     
-    this.renderer.listen(this.el.nativeElement, 'dragover', event => {
+    this.renderer.listen(this.el.nativeElement, 'dragover', (event: DragEvent) => {
       event.stopPropagation();
       event.preventDefault();
     });
     
-    this.renderer.listen(this.el.nativeElement, 'drop', event => {
+    this.renderer.listen(this.el.nativeElement, 'drop', (event: DragEvent) => {
       event.stopPropagation();
       event.preventDefault();
       
@@ -35,8 +35,9 @@ export class FileDropzoneDirective implements OnInit {
     });
   }
 
-  private handleFiles(files) {
-    for (let file of files) {
+  private handleFiles(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
       const reader = new FileReader();
         
       reader.onload = (loaded: ProgressEvent) => {
