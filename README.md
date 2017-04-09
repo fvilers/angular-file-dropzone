@@ -1,6 +1,10 @@
 # angular-file-dropzone
 A simple file dropzone for Angular
 
+
+## Quick links
+[API Reference](https://github.com/fvilers/angular-file-dropzone/wiki/api-reference), [Plunker demo](https://embed.plnkr.co/Ru0Pl0rAWiyfHgfy9LtZ/).
+
 ## Installation
 Add the package to your application.
 
