@@ -47,7 +47,11 @@ Add the file dropzone directive to an element, like a div.
 Bind to the `fileDrop` event to get the dropped file from the `$event` variable.
 
 ```
-<div ngFileDropzone (fileDrop)="file = $event">Drop a file in this zone.</div>
+<div
+  ngFileDropzone
+  (fileDrop)="file = $event">
+  Drop a file in this zone.
+</div>
 ```
 
 The dropped file implements the following interface:
