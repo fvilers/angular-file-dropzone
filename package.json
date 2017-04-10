@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "A simple file dropzone for Angular",
   "scripts": {
-    "clean": "rimraf aot && rimraf dist",
+    "clean": "rimraf dist",
     "transpile": "ngc",
     "package": "rollup -c",
     "minify": "uglifyjs dist/bundles/file-dropzone.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/file-dropzone.umd.min.js",
@@ -39,5 +39,8 @@
     "rollup": "0.41.6",
     "typescript": "2.2.2",
     "uglify-js": "2.8.21"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=4.0.0"
   }
 }

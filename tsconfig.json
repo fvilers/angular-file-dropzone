@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "inlineSources": true,
     "lib": [
@@ -11,7 +12,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "paths": {
       "@angular/core": ["node_modules/@angular/core"]
     },
@@ -23,10 +24,10 @@
     "target": "es5"
   },
   "files": [
-    "index.ts"
+    "./index.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "aot",
+    "skipTemplateCodegen": true,
     "strictMetadataEmit": true
   }
 }

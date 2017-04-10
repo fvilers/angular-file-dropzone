@@ -2,10 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const packageJson = require('../package.json');
 
-copy('LICENSE', './dist');
-copy('package.json', './dist');
-copy('README.md', './dist');
+delete packageJson.dependencies;
+delete packageJson.devDependencies;
+fs.writeFileSync('./dist/package.json', JSON.stringify(packageJson), 'utf-8')
+
+copy('./LICENSE', './dist');
+copy('./README.md', './dist');
 
 function copy(source, destination) {
   if (fs.existsSync(destination) && fs.lstatSync(destination).isDirectory()) {
