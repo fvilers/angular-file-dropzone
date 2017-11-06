@@ -1,12 +1,15 @@
-import { Directive, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 
 import { DroppedFile } from './dropped-file';
 import { DroppedFileImpl } from './dropped-file-impl';
+import { ReadMode } from './read-mode.enum';
 
 @Directive({
   selector: '[ngFileDropzone]'
 })
 export class FileDropzoneDirective implements OnInit {
+  @Input('ngFileDropzone') readMode: ReadMode;
+
   @Output()
   public fileDrop = new EventEmitter<DroppedFile>();
 
@@ -42,12 +45,26 @@ export class FileDropzoneDirective implements OnInit {
 
       reader.onload = (loaded: ProgressEvent) => {
         const fileReader = loaded.target as FileReader;
-        const droppedFile = new DroppedFileImpl(file.lastModifiedDate, file.name, file.size, file.type, fileReader.result);
+        const droppedFile = new DroppedFileImpl(file.lastModifiedDate, file.name, file.size, file.type, this.readMode, fileReader.result);
 
         this.fileDrop.emit(droppedFile);
       };
 
-      reader.readAsDataURL(file);
+      switch (this.readMode) {
+        case ReadMode.arrayBuffer:
+          reader.readAsArrayBuffer(file);
+          break;
+        case ReadMode.binaryString:
+          reader.readAsBinaryString(file);
+          break;
+        case ReadMode.text:
+          reader.readAsText(file);
+          break;
+        case ReadMode.dataURL:
+        default:
+          reader.readAsDataURL(file);
+          break;
+      }
     }
   }
 }

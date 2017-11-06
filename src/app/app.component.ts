@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DroppedFile } from './modules/angular-file-dropzone';
+import { DroppedFile, ReadMode } from './modules/angular-file-dropzone';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,7 @@ import { DroppedFile } from './modules/angular-file-dropzone';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public readMode = ReadMode.dataURL;
   public isHover: boolean;
   public files: Array<DroppedFile> = [];
   
