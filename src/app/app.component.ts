@@ -8,6 +8,7 @@ import { DroppedFile } from './modules/angular-file-dropzone';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public isHover: boolean;
   public files: Array<DroppedFile> = [];
   
   addFile(file: DroppedFile) {
