@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 import { DroppedFile } from './dropped-file';
 import { DroppedFileImpl } from './dropped-file-impl';
@@ -7,37 +7,35 @@ import { ReadMode } from './read-mode.enum';
 @Directive({
   selector: '[ngFileDropzone]'
 })
-export class FileDropzoneDirective implements OnInit {
+export class FileDropzoneDirective {
   @Input('ngFileDropzone') readMode: ReadMode;
 
   @Output()
   public fileDrop = new EventEmitter<DroppedFile>();
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  
+  @HostListener('dragenter', ['$event'])
+  public onDragEnter(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+  
+  @HostListener('dragover', ['$event'])
+  public onDragOver(event) {
+    event.stopPropagation();
+    event.preventDefault();
   }
 
-  ngOnInit() {
-    this.renderer.listen(this.el.nativeElement, 'dragenter', (event: DragEvent) => {
-      event.stopPropagation();
-      event.preventDefault();
-    });
+  @HostListener('drop', ['$event'])
+  public onDrop(event) {
+    event.stopPropagation();
+    event.preventDefault();
 
-    this.renderer.listen(this.el.nativeElement, 'dragover', (event: DragEvent) => {
-      event.stopPropagation();
-      event.preventDefault();
-    });
+    var dt = event.dataTransfer;
+    var files = dt.files;
 
-    this.renderer.listen(this.el.nativeElement, 'drop', (event: DragEvent) => {
-      event.stopPropagation();
-      event.preventDefault();
-
-      var dt = event.dataTransfer;
-      var files = dt.files;
-
-      for (let i = 0; i < files.length; i++) {
-        this.readFile(files[i]);
-      }
-    });
+    for (let i = 0; i < files.length; i++) {
+      this.readFile(files[i]);
+    }
   }
 
   private readFile(file: File) {
