@@ -5,10 +5,12 @@ import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/mater
 import { AngularFileDropzoneModule } from './modules/angular-file-dropzone';
 
 import { AppComponent } from './app.component';
+import { ReadModePipe } from './read-mode.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReadModePipe
   ],
   imports: [
     BrowserModule,

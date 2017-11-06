@@ -45,6 +45,21 @@ Add the file dropzone directive to an element, like a div.
 <div ngFileDropzone>Drop a file in this zone.</div>
 ```
 
+Select how the file should be read; by default the mode is dataUrl. Available read modes are exposed through the ReadMode enum.
+
+```
+<div [ngFileDropzone]="readMode">Drop a file in this zone.</div>
+```
+
+```
+enum ReadMode {
+  arrayBuffer,
+  binaryString,
+  dataURL,
+  text
+}
+```
+
 Bind to the `fileDrop` event to get the dropped file from the `$event` variable.
 
 ```
@@ -63,7 +78,8 @@ interface DroppedFile {
   name: string;
   size: number;
   type: string;
-  dataURL: string;
+  readMode: ReadMode;
+  content: any;
 }
 ```
 

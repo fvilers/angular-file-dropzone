@@ -6,7 +6,7 @@ main {
   padding: 20px;
 }
 
-[ngFileDropZone] {
+.dropzone {
   align-items: center;
   background: lightgrey;
   border: dashed 1px grey;

@@ -7,14 +7,15 @@
 <main class="mat-typography">
   <span class="mat-title">Drop a file</span>
   
-  <div ngFileDropzone (fileDrop)="addFile($event)" [ngClass]="{'hover': isHover }" (dragenter)="isHover = true" (dragleave)="isHover = false" (drop)="isHover = false">
+  <div class="dropzone" [ngFileDropzone]="readMode" (fileDrop)="addFile($event)">
     <mat-icon class="big">file_upload</mat-icon>
   </div>
   
   <span class="mat-title" *ngIf="files.length">Dropped files</span>
   <ul>
     <li *ngFor="let file of files">
-      {{file.name}} ({{file.size}} bytes)
+      {{file.name}} ({{file.size}} bytes) read using {{readMode | readMode}}
+      <pre>{{file.content}}</pre>
     </li>
   </ul>
 </main>

@@ -1,4 +1,5 @@
 import { DroppedFile } from './dropped-file';
+import { ReadMode } from './read-mode.enum';
 
 export class DroppedFileImpl implements DroppedFile {
   get lastModifiedDate(): Date {
@@ -17,8 +18,12 @@ export class DroppedFileImpl implements DroppedFile {
     return this._type;
   }
 
-  get dataURL(): string {
-    return this._dataURL;
+  get readMode(): ReadMode {
+    return this._readMode;
+  }
+
+  get content(): any {
+    return this._content;
   }
 
   constructor(
@@ -26,6 +31,7 @@ export class DroppedFileImpl implements DroppedFile {
     private _name: string,
     private _size: number,
     private _type: string,
-    private _dataURL: string) {
+    private _readMode: ReadMode,
+    private _content: any) {
   }
 }
