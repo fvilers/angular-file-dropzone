@@ -1,6 +1,6 @@
 {
   "name": "angular-file-dropzone",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A simple file dropzone for Angular",
   "scripts": {
     "ng": "ng",
