@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng-packagr -p ng-package.json"
+    "build": "ng-packagr -p ng-package.json",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
