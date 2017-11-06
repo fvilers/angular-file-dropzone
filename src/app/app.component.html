@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <h1>Angular File Dropzone Demo</h1>
+  <span class="filler"></span>
+  <a href="https://github.com/fvilers/angular-file-dropzone" mat-button>GitHub</a>
+</mat-toolbar>
+
+<main class="mat-typography">
+  <span class="title">Drop a file</span>
+  
+  <div ngFileDropzone (fileDrop)="addFile($event)" [ngClass]="{'hover': isHover }" (dragenter)="isHover = true" (dragleave)="isHover = false" (drop)="isHover = false">
+    <mat-icon class="big">file_upload</mat-icon>
+  </div>
+  
+  <span class="title" *ngIf="files.length">Dropped files</span>
+  <ul>
+    <li *ngFor="let file of files">
+      {{file.name}} ({{file.size}} bytes)
+    </li>
+  </ul>
+</main>
