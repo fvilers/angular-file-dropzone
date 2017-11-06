@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DroppedFile } from './modules/angular-file-dropzone/dropped-file';
+import { DroppedFile } from './modules/angular-file-dropzone';
 
 @Component({
   selector: 'app-root',
