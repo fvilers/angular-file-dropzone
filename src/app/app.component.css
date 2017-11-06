@@ -5,3 +5,24 @@
 main {
   padding: 20px;
 }
+
+[ngFileDropZone] {
+  align-items: center;
+  background: lightgrey;
+  border: dashed 1px grey;
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  width: 500px;
+}
+  
+.hover {
+  background: grey;
+  border: dashed 1px darkgrey;
+}
+  
+.big {
+  font-size: 96px;
+  height: 96px;
+  width: 96px;
+}
