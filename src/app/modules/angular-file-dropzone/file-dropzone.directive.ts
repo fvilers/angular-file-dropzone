@@ -34,37 +34,36 @@ export class FileDropzoneDirective implements OnInit {
       var dt = event.dataTransfer;
       var files = dt.files;
 
-      this.handleFiles(files);
+      for (let i = 0; i < files.length; i++) {
+        this.readFile(files[i]);
+      }
     });
   }
 
-  private handleFiles(files: FileList) {
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
+  private readFile(file: File) {
+    const reader = new FileReader();
+    
+    reader.onload = (loaded: ProgressEvent) => {
+      const fileReader = loaded.target as FileReader;
+      const droppedFile = new DroppedFileImpl(file.lastModifiedDate, file.name, file.size, file.type, this.readMode, fileReader.result);
 
-      reader.onload = (loaded: ProgressEvent) => {
-        const fileReader = loaded.target as FileReader;
-        const droppedFile = new DroppedFileImpl(file.lastModifiedDate, file.name, file.size, file.type, this.readMode, fileReader.result);
+      this.fileDrop.emit(droppedFile);
+    };
 
-        this.fileDrop.emit(droppedFile);
-      };
-
-      switch (this.readMode) {
-        case ReadMode.arrayBuffer:
-          reader.readAsArrayBuffer(file);
-          break;
-        case ReadMode.binaryString:
-          reader.readAsBinaryString(file);
-          break;
-        case ReadMode.text:
-          reader.readAsText(file);
-          break;
-        case ReadMode.dataURL:
-        default:
-          reader.readAsDataURL(file);
-          break;
-      }
+    switch (this.readMode) {
+      case ReadMode.arrayBuffer:
+        reader.readAsArrayBuffer(file);
+        break;
+      case ReadMode.binaryString:
+        reader.readAsBinaryString(file);
+        break;
+      case ReadMode.text:
+        reader.readAsText(file);
+        break;
+      case ReadMode.dataURL:
+      default:
+        reader.readAsDataURL(file);
+        break;
     }
   }
 }
