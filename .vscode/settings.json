@@ -2,6 +2,7 @@
   "files.exclude": {
     "node_modules": true,
     "npm-debug.log*": true,
-    "dist": true
+    "dist": true,
+    ".ng_pkg_build": true
   }
 }

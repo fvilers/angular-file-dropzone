@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
-import { AngularFileDropzoneModule } from './modules/angular-file-dropzone';
+import { AngularFileDropzoneModule } from '../lib';
 
 import { AppComponent } from './app.component';
 import { ReadModePipe } from './read-mode.pipe';
