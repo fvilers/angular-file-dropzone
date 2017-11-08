@@ -8,7 +8,7 @@
     "build:gh": "ng build --prod --output-path docs --base-href angular-file-dropzone",
     "build": "cpr package.json src/lib/package.json -o && ng-packagr -p ng-package.json",
     "version": "npm run build && npm run build:gh",
-    "postversion": "git push && git push --tags & npm publish dist"
+    "postversion": "git push && git push --tags && npm publish dist"
   },
   "repository": {
     "type": "git",
