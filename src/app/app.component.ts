@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DroppedFile, ReadMode } from './modules/angular-file-dropzone';
+import { DroppedFile, ReadMode } from '../lib';
 
 @Component({
   selector: 'app-root',
